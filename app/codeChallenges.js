@@ -1,15 +1,25 @@
+export function pastMidnight(h, m, s) {
+  if (h == 0 && m == 0 && s == 0) {
+    return 0;
+  }
+  const hoursToSeconds = h * 60 * 60;
+  const minsToSeconds = m * 60;
+  const totalSeconds = hoursToSeconds + minsToSeconds + s;
+  return totalSeconds * 1000;
+}
+
 /* 
 Make a program that filters a list of strings and returns a list with only your friends name in it.
 If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not.
 */
-function friend(friends) {
+export function friend(friends) {
   return friends.filter((friend) => friend.length == 4);
 }
 console.log("friend", friend(["Ryan", "Jimmy", "123", "4", "Cool Man"])); //["Ryan"]
 
 //String Ends With?
 //1.
-function strEndsWith(str, ending) {
+export function strEndsWith(str, ending) {
   if (ending.length > str.length) {
     return false;
   }
@@ -25,7 +35,7 @@ function strEndsWith(str, ending) {
 }
 
 //2.
-function strEndsWith(str, ending) {
+export function strEndsWith(str, ending) {
   return str.endsWith(ending);
 }
 
@@ -34,7 +44,8 @@ console.log("strEndsWith", strEndsWith("abcde", "gde"));
 /* 
 Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
 */
-function getSum(a, b) {
+
+export function getSum(a, b) {
   if (a === b) {
     return a;
   } else {
@@ -50,7 +61,7 @@ console.log("getSum", getSum(5, 2));
 /* 
 Create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out 
 */
-function filterList(list) {
+export function filterList(list) {
   return list.filter((l) => typeof l !== "string" && !isNaN(l));
 }
 console.log("filterList", filterList([1, 2, "aasf", "1", "123", 123])); //[1,2,123]
@@ -73,7 +84,7 @@ console.log("Jaden", "blah blah yay blah".toJadenCase());
 /* 
 Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present 
 */
-function spinWords(str) {
+export function spinWords(str) {
   let returnString = str;
 
   if (str.includes(" ")) {
@@ -98,25 +109,6 @@ Your classmates asked you to copy some paperwork for them. You know that there a
 Your task is to calculate how many blank pages do you need. 
 If n < 0 or m < 0 return 0 
 */
-function paperwork(n, m) {
-  return n < 0 || m < 0 ? 0 : n * m;
+export function paperwork(classMates, pages) {
+  return classMates < 0 || pages < 0 ? 0 : classMates * pages;
 }
-
-console.log("paperwork", paperwork(-5, 5));
-console.log("paperwork2", paperwork(5, 5));
-
-/* 
-Clock shows h hours, m minutes and s seconds after midnight.
-Your task is to write a function which returns the time since midnight in milliseconds 
-*/
-function pastMidnight(h, m, s) {
-  if (h == 0 && m == 0 && s == 0) {
-    return 0;
-  }
-  const hoursToSeconds = h * 60 * 60;
-  const minsToSeconds = m * 60;
-  const totalSeconds = hoursToSeconds + minsToSeconds + s;
-  return totalSeconds * 1000;
-}
-
-console.log("pastMidnight", pastMidnight(1, 1, 1)); //366100
