@@ -129,3 +129,20 @@ export function getCount(str) {
   }
   return vowelCount;
 }
+
+// Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+export function isPangram(string) {
+  const strArr = string.toLowerCase().split("").sort();
+  const punct = ["''", ",", ":", "-", "?", ".", " "];
+  const alphArr = [];
+  for (let i = 0; i < strArr.length; i++) {
+    if (isNaN(parseInt(strArr[i]))) {
+      if (!punct.includes(strArr[i])) {
+        if (!alphArr.includes(strArr[i])) {
+          alphArr.push(strArr[i]);
+        }
+      }
+    }
+  }
+  return alphArr.length == 26;
+}
