@@ -35,11 +35,11 @@ export function strEndsWith(str, ending) {
 }
 
 //2.
-export function strEndsWith(str, ending) {
+export function strEndsWith2(str, ending) {
   return str.endsWith(ending);
 }
 
-console.log("strEndsWith", strEndsWith("abcde", "gde"));
+console.log("strEndsWith", strEndsWith2("abcde", "gde"));
 
 /* 
 Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
@@ -88,7 +88,7 @@ export function spinWords(str) {
   let returnString = str;
 
   if (str.includes(" ")) {
-    stringArr = str.split(" ");
+    let stringArr = str.split(" ");
     for (let i = 0; i < stringArr.length; i++) {
       if (stringArr[i].length >= 5) {
         stringArr[i] = stringArr[i].split("").reverse().join("");
@@ -111,4 +111,21 @@ If n < 0 or m < 0 return 0
 */
 export function paperwork(classMates, pages) {
   return classMates < 0 || pages < 0 ? 0 : classMates * pages;
+}
+
+/* 
+We will consider [a, e, i, o, u] as vowels for this Kata (but not y).
+The input string will only consist of lower case letters and/or spaces
+*/
+
+export function getCount(str) {
+  const vowels = ["a", "e", "i", "o", "u"];
+  const newArr = str.split("");
+  let vowelCount = 0;
+  for (let i = 0; i < newArr.length; i++) {
+    if (vowels.includes(newArr[i])) {
+      vowelCount += 1;
+    }
+  }
+  return vowelCount;
 }

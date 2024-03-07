@@ -9,4 +9,16 @@ describe("Fixed Tests", () => {
     assert.strictEqual(challenges.pastMidnight(1, 0, 1), 3601000);
     assert.strictEqual(challenges.pastMidnight(1, 0, 0), 3600000);
   });
+
+  it(
+    ("Tests VowelCount",
+    () => {
+      assert.strictEqual(challenges.getCount("abracadabra"), 5);
+      assert.strictEqual(challenges.getCount("pear tree"), 4);
+      assert.strictEqual(
+        challenges.getCount("o a kak ushakov lil vo kashu kakao", 13),
+        5
+      );
+    })
+  );
 });
