@@ -146,3 +146,55 @@ export function isPangram(string) {
   }
   return alphArr.length == 26;
 }
+
+// There is an array with some numbers. All numbers are equal except for one.
+export function findUniq(arr) {
+  let numDic = {};
+  arr.forEach((n) => (numDic[n] = 0));
+  for (let i = 0; i < arr.length; i++) {
+    numDic[arr[i]] += 1;
+  }
+
+  for (let [k, v] of Object.entries(numDic)) {
+    if (v === 1) {
+      return Number(k);
+    }
+  }
+}
+
+/*
+Given a string indicating a range of letters, return a string which includes all the letters in that range, including the last letter.
+Note that if the range is given in capital letters, return the string in capitals also 
+*/
+function gimmeTheLetters(str) {
+  const isUpper = str[0] === str[0].toUpperCase();
+  let alphStr = "abcdefghijklmnopqrstuvwxyz";
+  let alphArr = isUpper ? alphStr.toUpperCase().split("") : alphStr.split("");
+  let strArr = str.split("-");
+
+  const startInd = alphArr.indexOf(strArr[0]);
+  const endInd = alphArr.indexOf(strArr[1]);
+
+  return alphArr.slice(startInd, endInd + 1).join("");
+}
+
+/* 
+Write a function that takes a string and return a new string with all vowels removed.
+*/
+export function disemvowel(str) {
+  const vowelArr = ["a", "e", "i", "o", "u"];
+  const capVowelArr = ["A", "E", "I", "O", "U"];
+
+  const strArr = str.split("");
+  return strArr
+    .filter((s) => !vowelArr.includes(s) && !capVowelArr.includes(s))
+    .join("");
+}
+
+//Square every digit of a number and concatenate them.
+export function squareDigits(num) {
+  const numToStrArr = num.toString().split("");
+  let numArr = [];
+  numToStrArr.forEach((n) => numArr.push(Number(n) ** 2));
+  return Number(numArr.join(""));
+}

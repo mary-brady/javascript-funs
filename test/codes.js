@@ -10,15 +10,21 @@ describe("Fixed Tests", () => {
     assert.strictEqual(challenges.pastMidnight(1, 0, 0), 3600000);
   });
 
-  it(
-    ("Tests VowelCount",
-    () => {
-      assert.strictEqual(challenges.getCount("abracadabra"), 5);
-      assert.strictEqual(challenges.getCount("pear tree"), 4);
-      assert.strictEqual(
-        challenges.getCount("o a kak ushakov lil vo kashu kakao", 13),
-        5
-      );
-    })
-  );
+  it("Tests getCount", () => {
+    assert.strictEqual(challenges.getCount("abracadabra"), 5);
+    assert.strictEqual(challenges.getCount("pear tree"), 4);
+    assert.strictEqual(
+      challenges.getCount("o a kak ushakov lil vo kashu kakao"),
+      13
+    );
+  });
+
+  it("Tests findUniq", () => {
+    assert.strictEqual(challenges.findUniq([1, 0, 0]), 1);
+    assert.strictEqual(challenges.findUniq([0, 1, 0]), 1);
+    assert.strictEqual(challenges.findUniq([0, 0, 1]), 1);
+    assert.strictEqual(challenges.findUniq([1, 1, 1, 2, 1, 1]), 2);
+    assert.strictEqual(challenges.findUniq([1, 1, 2, 1, 1]), 2);
+    assert.strictEqual(challenges.findUniq([3, 10, 3, 3, 3]), 10);
+  });
 });
