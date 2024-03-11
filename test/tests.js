@@ -27,4 +27,30 @@ describe("Fixed Tests", () => {
     assert.strictEqual(challenges.findUniq([1, 1, 2, 1, 1]), 2);
     assert.strictEqual(challenges.findUniq([3, 10, 3, 3, 3]), 10);
   });
+
+  it("Tests duplicateCount", () => {
+    assert.strictEqual(challenges.duplicateCount(""), 0);
+    assert.strictEqual(challenges.duplicateCount("abcde"), 0);
+    assert.strictEqual(challenges.duplicateCount("aabbcde"), 2);
+    assert.strictEqual(
+      challenges.duplicateCount("aabBcde"),
+      2,
+      "should ignore case"
+    );
+    assert.strictEqual(challenges.duplicateCount("Indivisibility"), 1);
+    assert.strictEqual(
+      challenges.duplicateCount("Indivisibilities"),
+      2,
+      "characters may not be adjacent"
+    );
+  });
+
+  it("Tests descendingOrder", () => {
+    assert.strictEqual(challenges.descendingOrder(0), 0);
+    assert.strictEqual(challenges.descendingOrder(1), 1);
+    assert.strictEqual(challenges.descendingOrder(111), 111);
+    assert.strictEqual(challenges.descendingOrder(15), 51);
+    assert.strictEqual(challenges.descendingOrder(1021), 2110);
+    assert.strictEqual(challenges.descendingOrder(123456789), 987654321);
+  });
 });

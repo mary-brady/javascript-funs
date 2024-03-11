@@ -198,3 +198,42 @@ export function squareDigits(num) {
   numToStrArr.forEach((n) => numArr.push(Number(n) ** 2));
   return Number(numArr.join(""));
 }
+
+export function highAndLow(numbers) {
+  let numArr = numbers.split(" ");
+  for (let i = 0; i < numArr.length; i++) {
+    numArr[i] = Number(numArr[i]);
+  }
+  return `${Math.max.apply(null, numArr)} ${Math.min.apply(null, numArr)}`;
+}
+
+/* 
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. 
+The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits. 
+*/
+export function duplicateCount(text) {
+  const textArr = text.toLowerCase().split("");
+  let newDict = {};
+
+  textArr.forEach((t) => (newDict[t] = 0));
+
+  for (let i = 0; i < textArr.length; i++) {
+    newDict[textArr[i]] += 1;
+  }
+
+  let numOfDoops = 0;
+  for (const [k, v] of Object.entries(newDict)) {
+    if (v > 1) numOfDoops++;
+  }
+
+  return numOfDoops;
+}
+
+/* 
+Make a function that can take any non-negative integer 
+as an argument and return it with its digits in descending order.
+*/
+export function descendingOrder(n) {
+  const numArr = String(n).split("").sort().reverse().join("");
+  return Number(numArr);
+}
