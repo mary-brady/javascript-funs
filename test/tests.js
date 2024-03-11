@@ -53,4 +53,11 @@ describe("Fixed Tests", () => {
     assert.strictEqual(challenges.descendingOrder(1021), 2110);
     assert.strictEqual(challenges.descendingOrder(123456789), 987654321);
   });
+
+  it("Tests getMiddle", function () {
+    assert.strictEqual(challenges.getMiddle("yeet"), "ee");
+    assert.strictEqual(challenges.getMiddle("testing"), "t");
+    assert.strictEqual(challenges.getMiddle("middle"), "dd");
+    assert.strictEqual(challenges.getMiddle("A"), "A");
+  });
 });

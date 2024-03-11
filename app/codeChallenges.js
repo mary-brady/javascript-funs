@@ -237,3 +237,21 @@ export function descendingOrder(n) {
   const numArr = String(n).split("").sort().reverse().join("");
   return Number(numArr);
 }
+
+/* 
+return the middle character of the word. If the word's length is odd, return the middle character. 
+If the word's length is even, return the middle 2 characters.
+*/
+export function getMiddle(s) {
+  if (s.length < 2) {
+    return s;
+  }
+  const strLength = s.length;
+  const middleIndex = (strLength - 1) / 2;
+
+  if (strLength % 2 == 0) {
+    return s[strLength / 2 - 1] + s[strLength / 2];
+  }
+
+  return s[middleIndex];
+}
