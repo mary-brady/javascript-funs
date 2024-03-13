@@ -255,3 +255,38 @@ export function getMiddle(s) {
 
   return s[middleIndex];
 }
+
+/* 
+An isogram is a word that has no repeating letters, consecutive or non-consecutive. 
+Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+ */
+export function isIsogram(str) {
+  str = str.toLowerCase();
+  const strArr = str.split("");
+  let strDic = {};
+  strArr.forEach((s) => (strDic[s] = 0));
+  for (let i = 0; i < strArr.length; i++) {
+    strDic[strArr[i]]++;
+    if (strDic[strArr[i]] >= 2) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/* 
+Move the first letter of each word to the end of it, then add "ay" to the end of the word. 
+Leave punctuation marks untouched.
+ */
+export function pigIt(str) {
+  const strArr = str.split(" ");
+  const punct = [".", "!", "?"];
+  for (let i = 0; i < strArr.length; i++) {
+    if (!punct.includes(strArr[i])) {
+      let wordArr = strArr[i].split("");
+      let letter = wordArr.shift();
+      strArr[i] = `${wordArr.join("")}${letter}ay`;
+    }
+  }
+  return strArr.join(" ");
+}

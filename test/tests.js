@@ -60,4 +60,26 @@ describe("Fixed Tests", () => {
     assert.strictEqual(challenges.getMiddle("middle"), "dd");
     assert.strictEqual(challenges.getMiddle("A"), "A");
   });
+
+  it("Tests isIsogram", function () {
+    assert.strictEqual(challenges.isIsogram("Dermatoglyphics"), true);
+    assert.strictEqual(challenges.isIsogram("testing"), false);
+    assert.strictEqual(challenges.isIsogram("moOse"), false);
+    assert.strictEqual(challenges.isIsogram("A"), true);
+  });
+
+  it("Tests pigIt", function () {
+    assert.strictEqual(
+      challenges.pigIt("This is my string"),
+      "hisTay siay ymay tringsay"
+    );
+    assert.strictEqual(
+      challenges.pigIt("Quis custodiet ipsos custodes ?"),
+      "uisQay ustodietcay psosiay ustodescay ?"
+    );
+    assert.strictEqual(
+      challenges.pigIt("O tempora o mores !"),
+      "Oay emporatay oay oresmay !"
+    );
+  });
 });
