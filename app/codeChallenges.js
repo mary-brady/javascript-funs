@@ -308,3 +308,47 @@ export function solution(number) {
   }
   return sum;
 }
+
+/* 
+You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+ */
+export function likes(names) {
+  const verbiage = (names.length > 1 ? ` like` : ` likes`) + " this";
+  if (names.length == 0) {
+    return `No one${verbiage}`;
+  }
+  if (names.length == 1) {
+    return names + verbiage;
+  }
+  if (names.length == 2) {
+    return names.join(" and ") + `${verbiage}`;
+  }
+  if (names.length == 3) {
+    return `${names[0]}, ${names[1]} and ${names[2]}${verbiage}`;
+  }
+  if (names.length > 3) {
+    const nameArr = names.slice(0, 2);
+    return nameArr.join(", ") + ` and ${names.length - 2} others` + verbiage;
+  }
+}
+/* 
+Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+ */
+
+export function createPhoneNumber(numbers) {
+  const areaCode = numbers.slice(0, 3).join("");
+  const firstThree = numbers.slice(3, 6).join("");
+  const lastFour = numbers.slice(6, 10).join("");
+  return `(${areaCode}) ${firstThree}-${lastFour}`;
+}
+
+/* 
+implement a difference function which subtracts one list from another and returns the result.
+It should remove all values from list a, which are present in list b keeping their order.
+ */
+export function arrayDiff(a, b) {
+  if (b.length < 0) {
+    return a;
+  }
+  return a.filter((num) => !b.includes(num));
+}
