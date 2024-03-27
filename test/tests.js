@@ -155,4 +155,46 @@ describe("Fixed Tests", () => {
       "a was [1,2,3], b was [1,2]"
     );
   });
+
+  it("Tests sortMyString", function () {
+    assert.strictEqual(challenges.sortMyString("CodeWars"), "CdWr oeas");
+    assert.strictEqual(
+      challenges.sortMyString("YCOLUE'VREER"),
+      "YOU'RE CLEVER"
+    );
+    assert.strictEqual(
+      challenges.sortMyString("tvXfQfxYYj18QLZ2YtdyR5VM722xvrR69uyUyNyvLusXC"),
+      "tXQxY1QZYdRV72vR9yyyLsC vffYj8L2ty5M2xr6uUNvuX"
+    );
+  });
+});
+
+describe("Tests Each", function () {
+  function act(n, xs, expected) {
+    const actual = challenges.each(n, xs.slice());
+    assert.deepEqual(actual, expected);
+  }
+
+  const basicTests = [
+    [1, [], []],
+    [-1, [], []],
+    [0, [], []],
+    [0, [1, 2, 3, 4, 5, 6], []],
+    [1, [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]],
+    [-1, [1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1]],
+    [2, [1, 2, 3, 4, 5, 6], [2, 4, 6]],
+    [-2, [1, 2, 3, 4, 5, 6], [5, 3, 1]],
+    [3, [1, 2], []],
+    [-3, [1, 2], []],
+    [5, [1, 2, 3, 4, 5, 6, 7], [5]],
+    [-5, [1, 2, 3, 4, 5, 6, 7], [3]],
+  ];
+
+  describe("Basic tests for Each", function () {
+    for (let [n, xs, expected] of basicTests) {
+      it(`n = ${n}, xs = [${xs}]`, function () {
+        act(n, xs, expected);
+      });
+    }
+  });
 });

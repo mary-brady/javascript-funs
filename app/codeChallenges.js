@@ -352,3 +352,64 @@ export function arrayDiff(a, b) {
   }
   return a.filter((num) => !b.includes(num));
 }
+
+/* 
+Given a string s, your task is to return another string such that even-indexed 
+and odd-indexed characters of s are grouped and the groups are space-separated. 
+Even-indexed group comes as first, followed by a space, and then by the odd-indexed part.
+ */
+export function sortMyString(S) {
+  let newStr = "";
+  let arr = [];
+  let arr2 = [];
+  for (let i = 0; i < S.length; i++) {
+    if (i % 2 == 0) {
+      arr.push(S[i]);
+    } else {
+      arr2.push(S[i]);
+    }
+  }
+  newStr = `${arr.join("")} ${arr2.join("")}`;
+  return newStr;
+}
+
+/* 
+Write a function that takes an integer number n and a (possibly empty) list of integers and 
+returns a list of every nth element of the input list (which possibly is the empty list).
+If n < 0, count by abs n from the end of the list.
+If n == 0, return an empty list. 
+*/
+export function each(n, xs) {
+  let returnArr = [];
+  if (n == 0 || xs.length == 0 || n > xs.length) {
+    return [];
+  }
+
+  if (n == -1) {
+    return xs.reverse();
+  }
+  if (n == 1) {
+    return xs;
+  }
+
+  if (n < 0) {
+    let count = 0;
+    for (let i = xs.length - 1; i >= 0; i--) {
+      count--;
+      if (count == n) {
+        returnArr.push(xs[i]);
+        count = 0;
+      }
+    }
+  } else {
+    count = 0;
+    xs.forEach((x) => {
+      count++;
+      if (count == n) {
+        returnArr.push(x);
+        count = 0;
+      }
+    });
+  }
+  return returnArr;
+}
