@@ -413,3 +413,23 @@ export function each(n, xs) {
   }
   return returnArr;
 }
+
+/* 
+make sure that each character in that word has the exact same number of occurrences. You will return true if it is valid, or false if it is not.
+ */
+export function validateWord(s) {
+  let charDic = {};
+  let charArr = s.toLowerCase().split("");
+  charArr.forEach((letter) => (charDic[letter] = 0));
+  for (let i = 0; i < charArr.length; i++) {
+    charDic[charArr[i]]++;
+  }
+  let countArr = [];
+  for (let key in charDic) {
+    countArr.push(charDic[key]);
+    if (charDic[key] !== countArr[0]) {
+      return false;
+    }
+  }
+  return true;
+}
